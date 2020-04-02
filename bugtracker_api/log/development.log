@@ -1,0 +1,2344 @@
+  [1m[35m (11.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (152.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (141.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBugs (20200331005551)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "bugs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "issue_type" integer DEFAULT 2, "priority" integer DEFAULT 1, "status" integer DEFAULT 1, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200331005551"]]
+  [1m[35m (145.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20200331005716)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "lname" varchar, "fname" text, "email" varchar, "thumbnail" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200331005716"]]
+  [1m[35m (129.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-31 00:59:17.843993"], ["updated_at", "2020-03-31 00:59:17.843993"]]
+  [1m[35m (75.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "thumbnail", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["lname", "Loc"], ["fname", "Le"], ["email", "leloc@gmail.com"], ["thumbnail", "txt.png"], ["created_at", "2020-03-31 01:28:11.499158"], ["updated_at", "2020-03-31 01:28:11.499158"]]
+  [1m[35m (108.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 68.32.80.246 at 2020-03-30 21:32:04 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/cabox/.rvm/gems/ruby-2.7.0/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/cabox/.rvm/gems/ruby-2.7.0/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.2ms | Allocations: 406)
+Completed 200 OK in 30ms (Views: 23.5ms | ActiveRecord: 0.0ms | Allocations: 2243)
+
+
+Started GET "/favicon.ico" for 68.32.80.246 at 2020-03-30 21:32:05 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users" for 68.32.80.246 at 2020-03-30 21:32:11 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 2ms (ActiveRecord: 0.0ms | Allocations: 1206)
+
+
+Started GET "/users" for 68.32.80.246 at 2020-03-30 21:32:21 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 50)
+
+
+Started GET "/bugs" for 68.32.80.246 at 2020-03-30 21:32:56 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users" for 68.32.80.246 at 2020-03-30 21:33:09 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 42)
+
+
+Started GET "/users" for 68.32.80.246 at 2020-03-30 21:33:19 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 49)
+
+
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "thumbnail", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["lname", "Lan"], ["fname", "Le"], ["email", "lelan@gmail.com"], ["thumbnail", "hell.png"], ["created_at", "2020-03-31 01:37:53.157554"], ["updated_at", "2020-03-31 01:37:53.157554"]]
+  [1m[35m (170.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Started GET "/users" for 68.32.80.246 at 2020-03-30 21:38:16 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 42)
+
+
+Started GET "/users" for 68.32.80.246 at 2020-03-30 21:38:16 -0400
+Processing by UsersController#index as HTML
+Completed 204 No Content in 0ms (ActiveRecord: 0.0ms | Allocations: 42)
+
+
+Started GET "/" for 68.32.80.246 at 2020-03-30 21:38:21 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/cabox/.rvm/gems/ruby-2.7.0/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/cabox/.rvm/gems/ruby-2.7.0/gems/railties-6.0.2.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.6ms | Allocations: 178)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 718)
+
+
+Started GET "/users" for 68.32.80.246 at 2020-03-30 21:41:05 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.5ms | Allocations: 5884)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-03-31 22:39:54 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 19ms (Views: 5.4ms | ActiveRecord: 0.5ms | Allocations: 6108)
+
+
+Started POST "//authors" for 68.32.80.246 at 2020-03-31 22:50:34 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [POST] "/authors"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "//authors" for 68.32.80.246 at 2020-03-31 22:50:34 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/authors"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "//authors" for 68.32.80.246 at 2020-03-31 22:50:35 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/authors"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started POST "//authors" for 68.32.80.246 at 2020-03-31 22:50:35 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/authors"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//users" for 68.32.80.246 at 2020-04-01 15:14:12 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 22ms (Views: 5.1ms | ActiveRecord: 0.5ms | Allocations: 6108)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 15:14:23 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"tes", "lname"=>"test", "email"=>"", "user"=>{"lname"=>"test", "fname"=>"tes", "email"=>""}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (10.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "test"], ["fname", "tes"], ["email", ""], ["created_at", "2020-04-01 19:14:23.094479"], ["updated_at", "2020-04-01 19:14:23.094479"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (145.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 184ms (Views: 0.2ms | ActiveRecord: 155.5ms | Allocations: 3692)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 15:14:59 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"tet", "lname"=>"tst", "email"=>"test@gmail.com", "user"=>{"lname"=>"tst", "fname"=>"tet", "email"=>"test@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "tst"], ["fname", "tet"], ["email", "test@gmail.com"], ["created_at", "2020-04-01 19:14:59.865760"], ["updated_at", "2020-04-01 19:14:59.865760"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (4964.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 4969ms (Views: 0.2ms | ActiveRecord: 4964.7ms | Allocations: 3416)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 15:15:14 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 1370)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 15:15:26 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 1354)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 15:17:46 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"asss", "lname"=>"aass", "email"=>"asdff@gmail.com", "user"=>{"lname"=>"aass", "fname"=>"asss", "email"=>"asdff@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "aass"], ["fname", "asss"], ["email", "asdff@gmail.com"], ["created_at", "2020-04-01 19:17:46.172310"], ["updated_at", "2020-04-01 19:17:46.172310"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (131.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 134ms (Views: 0.2ms | ActiveRecord: 131.4ms | Allocations: 3326)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 15:18:04 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"asss", "lname"=>"aass", "email"=>"asdff@gmail.com", "user"=>{"lname"=>"aass", "fname"=>"asss", "email"=>"asdff@gmail.com"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "aass"], ["fname", "asss"], ["email", "asdff@gmail.com"], ["created_at", "2020-04-01 19:18:04.023287"], ["updated_at", "2020-04-01 19:18:04.023287"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (163.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 169ms (Views: 0.2ms | ActiveRecord: 164.2ms | Allocations: 3393)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 15:18:27 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1650)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 15:18:41 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1648)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 15:22:28 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"", "lname"=>"", "email"=>"", "user"=>{"lname"=>"", "fname"=>"", "email"=>""}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", ""], ["fname", ""], ["email", ""], ["created_at", "2020-04-01 19:22:28.571635"], ["updated_at", "2020-04-01 19:22:28.571635"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (107.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 112ms (Views: 0.3ms | ActiveRecord: 107.5ms | Allocations: 3397)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 16:23:05 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1819)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 16:27:18 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1797)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 16:28:27 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 16:30:41 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+DEPRECATION WARNING: Using `bin/rake routes` is deprecated and will be removed in Rails 6.1. Use `bin/rails routes` instead.
+ (called from block in execute at /home/cabox/.rvm/rubies/ruby-2.7.0/lib/ruby/gems/2.7.0/gems/rake-13.0.1/lib/rake/task.rb:281)
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:10:44 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.1ms | Allocations: 1818)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:10:51 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:11:51 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:12:12 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:12:19 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:14:12 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:14:52 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:18:10 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:22:52 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:23:01 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:24:59 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 24ms (Views: 5.8ms | ActiveRecord: 0.5ms | Allocations: 6845)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:25:30 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.1ms | Allocations: 1812)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:28:23 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1811)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:32:28 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1811)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 17:32:43 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"hello", "lname"=>"hello", "email"=>"hello@gmail.com", "user"=>{"lname"=>"hello", "fname"=>"hello", "email"=>"hello@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "hello"], ["fname", "hello"], ["email", "hello@gmail.com"], ["created_at", "2020-04-01 21:32:43.823541"], ["updated_at", "2020-04-01 21:32:43.823541"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (230.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 234ms (Views: 0.2ms | ActiveRecord: 230.5ms | Allocations: 3677)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:32:48 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1942)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:43:28 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1965)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:45:00 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1942)
+
+
+Started DELETE "//users/3" for 68.32.80.246 at 2020-04-01 17:45:04 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"3", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (6.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (162.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 183ms (ActiveRecord: 168.6ms | Allocations: 4578)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:45:12 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1795)
+
+
+Started DELETE "//users/4" for 68.32.80.246 at 2020-04-01 17:45:16 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"4", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (385.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 388ms (ActiveRecord: 386.0ms | Allocations: 3185)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:45:24 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1648)
+
+
+Started DELETE "//users/7" for 68.32.80.246 at 2020-04-01 17:45:28 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"7", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (205.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 209ms (ActiveRecord: 206.0ms | Allocations: 3169)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:45:31 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1501)
+
+
+Started DELETE "//users/8" for 68.32.80.246 at 2020-04-01 17:45:33 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"8", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (119.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 123ms (ActiveRecord: 120.2ms | Allocations: 3169)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:45:36 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 1354)
+
+
+Started DELETE "//users/2" for 68.32.80.246 at 2020-04-01 17:46:41 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"2", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (148.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 152ms (ActiveRecord: 149.2ms | Allocations: 3170)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:46:44 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1201)
+
+
+Started DELETE "//users/5" for 68.32.80.246 at 2020-04-01 17:46:45 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"5", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (94.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 101ms (ActiveRecord: 94.6ms | Allocations: 3087)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:46:48 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 1053)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:47:46 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1053)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:48:02 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1053)
+
+
+Started PUT "//users/1" for 68.32.80.246 at 2020-04-01 17:48:10 -0400
+Processing by UsersController#update as JSON
+  Parameters: {"id"=>"1", "lname"=>"Loc", "fname"=>"hello", "email"=>"leloc@gmail.com", "thumbnail"=>"txt.png", "created_at"=>"2020-03-31T01:28:11.499Z", "updated_at"=>"2020-03-31T01:28:11.499Z", "user"=>{"id"=>"1", "lname"=>"Loc", "fname"=>"hello", "email"=>"leloc@gmail.com", "thumbnail"=>"txt.png", "created_at"=>"2020-03-31T01:28:11.499Z", "updated_at"=>"2020-03-31T01:28:11.499Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+[31mUnpermitted parameters: :id, :created_at, :updated_at[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `update'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "fname" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["fname", "hello"], ["updated_at", "2020-04-01 21:48:10.287736"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:27:in `update'
+  [1m[35m (313.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `update'
+Completed 204 No Content in 336ms (ActiveRecord: 314.1ms | Allocations: 3916)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:48:13 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 1053)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:48:34 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1053)
+
+
+Started PUT "//users/1" for 68.32.80.246 at 2020-04-01 17:48:42 -0400
+Processing by UsersController#update as JSON
+  Parameters: {"id"=>"1", "lname"=>"Lan", "fname"=>"hello", "email"=>"leloc@gmail.com", "thumbnail"=>"txt.png", "created_at"=>"2020-03-31T01:28:11.499Z", "updated_at"=>"2020-04-01T21:48:10.287Z", "user"=>{"id"=>"1", "lname"=>"Lan", "fname"=>"hello", "email"=>"leloc@gmail.com", "thumbnail"=>"txt.png", "created_at"=>"2020-03-31T01:28:11.499Z", "updated_at"=>"2020-04-01T21:48:10.287Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+[31mUnpermitted parameters: :id, :created_at, :updated_at[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `update'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "lname" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["lname", "Lan"], ["updated_at", "2020-04-01 21:48:42.019838"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:27:in `update'
+  [1m[35m (592.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `update'
+Completed 204 No Content in 597ms (ActiveRecord: 593.2ms | Allocations: 3852)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:49:35 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1053)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 17:49:47 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"ytei", "lname"=>"ytein", "email"=>"tyije@gmail.com", "user"=>{"lname"=>"ytein", "fname"=>"ytei", "email"=>"tyije@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "ytein"], ["fname", "ytei"], ["email", "tyije@gmail.com"], ["created_at", "2020-04-01 21:49:47.433930"], ["updated_at", "2020-04-01 21:49:47.433930"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (261.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 264ms (Views: 0.2ms | ActiveRecord: 261.4ms | Allocations: 3398)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 17:50:40 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"ytei", "lname"=>"ytein", "email"=>"tyije@gmail.com", "user"=>{"lname"=>"ytein", "fname"=>"ytei", "email"=>"tyije@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "ytein"], ["fname", "ytei"], ["email", "tyije@gmail.com"], ["created_at", "2020-04-01 21:50:40.474211"], ["updated_at", "2020-04-01 21:50:40.474211"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (1471.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 1474ms (Views: 0.2ms | ActiveRecord: 1471.5ms | Allocations: 3397)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:50:45 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 1348)
+
+
+Started DELETE "//users/10" for 68.32.80.246 at 2020-04-01 17:50:52 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"10", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (185.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 188ms (ActiveRecord: 185.4ms | Allocations: 3169)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:52:28 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 1200)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 17:52:37 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 21:52:37.158396"], ["updated_at", "2020-04-01 21:52:37.158396"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (145.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 149ms (Views: 0.2ms | ActiveRecord: 145.7ms | Allocations: 3393)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:53:58 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 1348)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 17:54:05 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 21:54:05.209290"], ["updated_at", "2020-04-01 21:54:05.209290"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (252.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 256ms (Views: 0.2ms | ActiveRecord: 252.5ms | Allocations: 3393)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 17:54:13 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 21:54:13.385551"], ["updated_at", "2020-04-01 21:54:13.385551"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (121.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 125ms (Views: 0.2ms | ActiveRecord: 121.6ms | Allocations: 3393)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:54:40 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.1ms | Allocations: 1643)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 17:54:45 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 21:54:45.477537"], ["updated_at", "2020-04-01 21:54:45.477537"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (143.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 147ms (Views: 0.2ms | ActiveRecord: 143.6ms | Allocations: 3394)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:56:20 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1789)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:56:24 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1789)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 17:56:30 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 21:56:30.171945"], ["updated_at", "2020-04-01 21:56:30.171945"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (5323.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 5327ms (Views: 0.2ms | ActiveRecord: 5324.3ms | Allocations: 3397)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:58:05 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1936)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 17:58:20 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"ssaafs", "lname"=>"afdsf", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"afdsf", "fname"=>"ssaafs", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "afdsf"], ["fname", "ssaafs"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 21:58:20.907456"], ["updated_at", "2020-04-01 21:58:20.907456"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (260.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 264ms (Views: 0.2ms | ActiveRecord: 260.6ms | Allocations: 3394)
+
+
+Started DELETE "//users/undefined" for 68.32.80.246 at 2020-04-01 17:59:20 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"undefined", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 576)
+
+
+Started DELETE "//users/15" for 68.32.80.246 at 2020-04-01 17:59:21 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"15", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (143.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 146ms (ActiveRecord: 143.8ms | Allocations: 3169)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:59:25 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1936)
+
+
+Started DELETE "//users/16" for 68.32.80.246 at 2020-04-01 17:59:26 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"16", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (127.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 130ms (ActiveRecord: 127.5ms | Allocations: 3170)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:59:28 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1789)
+
+
+Started DELETE "//users/14" for 68.32.80.246 at 2020-04-01 17:59:29 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"14", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (143.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 147ms (ActiveRecord: 144.0ms | Allocations: 3173)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 17:59:58 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1642)
+
+
+Started DELETE "//users/13" for 68.32.80.246 at 2020-04-01 18:00:04 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"13", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 13]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (110.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 114ms (ActiveRecord: 110.8ms | Allocations: 3169)
+
+
+Started DELETE "//users/12" for 68.32.80.246 at 2020-04-01 18:00:05 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"12", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (156.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 160ms (ActiveRecord: 156.8ms | Allocations: 3169)
+
+
+Started DELETE "//users/11" for 68.32.80.246 at 2020-04-01 18:00:06 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"11", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 11]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (499.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 503ms (ActiveRecord: 499.8ms | Allocations: 3170)
+
+
+Started DELETE "//users/9" for 68.32.80.246 at 2020-04-01 18:00:07 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"9", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 9]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (98.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 102ms (ActiveRecord: 99.0ms | Allocations: 3087)
+
+
+Started DELETE "//users/6" for 68.32.80.246 at 2020-04-01 18:00:07 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"6", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (103.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 107ms (ActiveRecord: 104.1ms | Allocations: 3170)
+
+
+Started DELETE "//users/1" for 68.32.80.246 at 2020-04-01 18:00:08 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (426.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 429ms (ActiveRecord: 426.5ms | Allocations: 3171)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:01:28 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 753)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 18:01:34 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 22:01:34.955963"], ["updated_at", "2020-04-01 22:01:34.955963"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (333.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 336ms (Views: 0.2ms | ActiveRecord: 333.6ms | Allocations: 3393)
+
+
+Started DELETE "//users/undefined" for 68.32.80.246 at 2020-04-01 18:01:38 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"undefined", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 570)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:01:52 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started DELETE "//users/17" for 68.32.80.246 at 2020-04-01 18:01:54 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"17", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (321.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 325ms (ActiveRecord: 321.5ms | Allocations: 3169)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:01:58 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 753)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:02:01 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 753)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 18:02:07 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 22:02:07.751753"], ["updated_at", "2020-04-01 22:02:07.751753"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (522.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 526ms (Views: 0.3ms | ActiveRecord: 522.5ms | Allocations: 3399)
+
+
+Started DELETE "//users/undefined" for 68.32.80.246 at 2020-04-01 18:02:10 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"undefined", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 570)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:02:14 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started DELETE "//users/18" for 68.32.80.246 at 2020-04-01 18:02:16 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"18", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 18]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (216.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 219ms (ActiveRecord: 216.9ms | Allocations: 3169)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:02:21 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 753)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:02:42 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 753)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 18:02:47 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 22:02:47.330957"], ["updated_at", "2020-04-01 22:02:47.330957"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (254.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 258ms (Views: 0.2ms | ActiveRecord: 255.3ms | Allocations: 3396)
+
+
+Started DELETE "//users/undefined" for 68.32.80.246 at 2020-04-01 18:03:54 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"undefined", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 570)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:03:57 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started DELETE "//users/19" for 68.32.80.246 at 2020-04-01 18:03:59 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"19", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 19]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (192.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 195ms (ActiveRecord: 192.5ms | Allocations: 3170)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:04:06 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms | Allocations: 754)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 18:04:10 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 22:04:10.047895"], ["updated_at", "2020-04-01 22:04:10.047895"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (166.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 170ms (Views: 0.2ms | ActiveRecord: 167.1ms | Allocations: 3394)
+
+
+Started DELETE "//users/undefined" for 68.32.80.246 at 2020-04-01 18:04:12 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"undefined", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+Completed 404 Not Found in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 570)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:04:14 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 901)
+
+
+Started DELETE "//users/20" for 68.32.80.246 at 2020-04-01 18:04:16 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"20", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 20]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (188.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 191ms (ActiveRecord: 188.7ms | Allocations: 3169)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:04:20 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 753)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 18:04:22 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"", "lname"=>"", "email"=>"", "user"=>{"lname"=>"", "fname"=>"", "email"=>""}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", ""], ["fname", ""], ["email", ""], ["created_at", "2020-04-01 22:04:22.853623"], ["updated_at", "2020-04-01 22:04:22.853623"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (269.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 273ms (Views: 0.3ms | ActiveRecord: 270.2ms | Allocations: 3390)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 18:04:26 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 22:04:26.590869"], ["updated_at", "2020-04-01 22:04:26.590869"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (165.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 169ms (Views: 0.2ms | ActiveRecord: 165.8ms | Allocations: 3393)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 18:04:29 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 22:04:29.628665"], ["updated_at", "2020-04-01 22:04:29.628665"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (2276.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 2280ms (Views: 0.2ms | ActiveRecord: 2277.1ms | Allocations: 3398)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:04:33 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 1194)
+
+
+Started DELETE "//users/23" for 68.32.80.246 at 2020-04-01 18:04:35 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"23", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 23]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (90.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 94ms (ActiveRecord: 91.1ms | Allocations: 3087)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:04:38 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 1047)
+
+
+Started DELETE "//users/22" for 68.32.80.246 at 2020-04-01 18:04:40 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"22", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 22]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (118.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 122ms (ActiveRecord: 119.2ms | Allocations: 3169)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:04:42 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:08:14 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:28:04 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 922)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 18:28:10 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 22:28:10.197164"], ["updated_at", "2020-04-01 22:28:10.197164"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (130.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 135ms (Views: 0.2ms | ActiveRecord: 131.1ms | Allocations: 3393)
+
+
+Started DELETE "//users/21" for 68.32.80.246 at 2020-04-01 18:28:56 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"21", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 21]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (155.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 160ms (ActiveRecord: 156.3ms | Allocations: 3103)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:29:00 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started DELETE "//users/24" for 68.32.80.246 at 2020-04-01 18:29:02 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"24", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 24]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (120.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 123ms (ActiveRecord: 120.7ms | Allocations: 2543)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:29:04 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 754)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 18:35:07 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 22:35:07.281256"], ["updated_at", "2020-04-01 22:35:07.281256"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (122.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 127ms (Views: 0.2ms | ActiveRecord: 123.0ms | Allocations: 3390)
+
+
+Started PUT "//users/25" for 68.32.80.246 at 2020-04-01 18:35:16 -0400
+Processing by UsersController#update as JSON
+  Parameters: {"fname"=>"lan", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "id"=>"25", "user"=>{"id"=>"25", "lname"=>"Le", "fname"=>"lan", "email"=>"leloc6787@gmail.com"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `update'
+  [1m[36mUser Update (67.6ms)[0m  [1m[33mUPDATE "users" SET "fname" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["fname", "lan"], ["updated_at", "2020-04-01 22:35:16.226818"], ["id", 25]]
+  ↳ app/controllers/users_controller.rb:27:in `update'
+  [1m[35m (254.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `update'
+Completed 204 No Content in 326ms (ActiveRecord: 322.7ms | Allocations: 3840)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:35:18 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 920)
+
+
+Started PUT "//users/25" for 68.32.80.246 at 2020-04-01 18:52:53 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#update as JSON
+  Parameters: {"id"=>"25", "lname"=>"laa", "fname"=>"lan", "email"=>"leloc6787@gmail.com", "thumbnail"=>nil, "created_at"=>"2020-04-01T22:35:07.281Z", "updated_at"=>"2020-04-01T22:35:16.226Z", "user"=>{"id"=>"25", "lname"=>"laa", "fname"=>"lan", "email"=>"leloc6787@gmail.com", "thumbnail"=>nil, "created_at"=>"2020-04-01T22:35:07.281Z", "updated_at"=>"2020-04-01T22:35:16.226Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+[31mUnpermitted parameters: :id, :created_at, :updated_at[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `update'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "lname" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["lname", "laa"], ["updated_at", "2020-04-01 22:52:53.063785"], ["id", 25]]
+  ↳ app/controllers/users_controller.rb:27:in `update'
+  [1m[35m (162.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `update'
+Completed 204 No Content in 167ms (ActiveRecord: 163.3ms | Allocations: 3866)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 18:52:58 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 920)
+
+
+Started DELETE "//users/25" for 68.32.80.246 at 2020-04-01 18:53:00 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"25", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 25], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 25]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (149.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 152ms (ActiveRecord: 150.0ms | Allocations: 3169)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:04:23 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 775)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 19:04:42 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 23:04:42.555378"], ["updated_at", "2020-04-01 23:04:42.555378"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (172.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 175ms (Views: 0.2ms | ActiveRecord: 172.4ms | Allocations: 3311)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:06:23 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:08:04 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:08:20 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:09:08 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:09:44 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:11:55 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:12:07 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 901)
+
+
+Started DELETE "//users/26" for 68.32.80.246 at 2020-04-01 19:13:31 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"26", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 26]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (282.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 285ms (ActiveRecord: 283.0ms | Allocations: 3188)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 19:14:06 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 23:14:06.661814"], ["updated_at", "2020-04-01 23:14:06.661814"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (1878.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 1881ms (Views: 0.2ms | ActiveRecord: 1878.5ms | Allocations: 3316)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:36:49 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 922)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:37:04 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 19:37:38 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 23:37:38.315936"], ["updated_at", "2020-04-01 23:37:38.315936"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (239.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 243ms (Views: 0.3ms | ActiveRecord: 239.6ms | Allocations: 3393)
+
+
+Started DELETE "//users/27" for 68.32.80.246 at 2020-04-01 19:37:41 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"27", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 27]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (133.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 136ms (ActiveRecord: 134.1ms | Allocations: 2512)
+
+
+Started DELETE "//users/28" for 68.32.80.246 at 2020-04-01 19:37:42 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"28", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 28]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (194.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 199ms (ActiveRecord: 195.4ms | Allocations: 3169)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:37:58 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 753)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 19:38:04 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-01 23:38:04.779635"], ["updated_at", "2020-04-01 23:38:04.779635"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (373.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 378ms (Views: 0.2ms | ActiveRecord: 373.7ms | Allocations: 3311)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:38:18 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:41:37 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:46:41 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:56:05 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 922)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:56:44 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:57:38 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:57:48 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:58:11 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:58:49 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 901)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 19:59:32 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 901)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:00:05 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:01:15 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:01:35 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:02:42 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 901)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:05:50 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:06:04 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:06:12 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:06:33 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:07:16 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:39:34 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 24ms (Views: 5.0ms | ActiveRecord: 0.5ms | Allocations: 5949)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-01 20:39:40 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"", "lname"=>"", "email"=>"", "user"=>{"lname"=>"", "fname"=>"", "email"=>""}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", ""], ["fname", ""], ["email", ""], ["created_at", "2020-04-02 00:39:40.431717"], ["updated_at", "2020-04-02 00:39:40.431717"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (161.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 172ms (Views: 0.2ms | ActiveRecord: 162.3ms | Allocations: 3692)
+
+
+Started DELETE "//users/30" for 68.32.80.246 at 2020-04-01 20:39:43 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"30", "user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 30]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (108.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 112ms (ActiveRecord: 108.7ms | Allocations: 3594)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:53:27 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 922)
+
+
+Started PUT "//users/29" for 68.32.80.246 at 2020-04-01 20:53:35 -0400
+Processing by UsersController#update as JSON
+  Parameters: {"id"=>"29", "lname"=>"Le", "fname"=>"Lan", "email"=>"leloc6787@gmail.com", "thumbnail"=>nil, "created_at"=>"2020-04-01T23:38:04.779Z", "updated_at"=>"2020-04-01T23:38:04.779Z", "user"=>{"id"=>"29", "lname"=>"Le", "fname"=>"Lan", "email"=>"leloc6787@gmail.com", "thumbnail"=>nil, "created_at"=>"2020-04-01T23:38:04.779Z", "updated_at"=>"2020-04-01T23:38:04.779Z"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+[31mUnpermitted parameters: :id, :created_at, :updated_at[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:27:in `update'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "fname" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["fname", "Lan"], ["updated_at", "2020-04-02 00:53:35.833528"], ["id", 29]]
+  ↳ app/controllers/users_controller.rb:27:in `update'
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:53:40 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (4733.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  ↳ app/controllers/users_controller.rb:27:in `update'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1984)
+
+
+Completed 204 No Content in 4738ms (ActiveRecord: 4733.8ms | Allocations: 6578)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:54:18 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-01 20:54:47 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 900)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-02 12:57:12 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 19ms (Views: 5.1ms | ActiveRecord: 0.5ms | Allocations: 5949)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-02 12:59:28 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 917)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-02 13:00:38 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 917)
+
+
+Started POST "//users" for 68.32.80.246 at 2020-04-02 13:00:51 -0400
+Processing by UsersController#create as JSON
+  Parameters: {"fname"=>"Loc", "lname"=>"Le", "email"=>"leloc6787@gmail.com", "user"=>{"lname"=>"Le", "fname"=>"Loc", "email"=>"leloc6787@gmail.com"}}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("lname", "fname", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["lname", "Le"], ["fname", "Loc"], ["email", "leloc6787@gmail.com"], ["created_at", "2020-04-02 17:00:51.627525"], ["updated_at", "2020-04-02 17:00:51.627525"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (347.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 351ms (Views: 0.2ms | ActiveRecord: 347.6ms | Allocations: 3604)
+
+
+Started DELETE "//users/31" for 68.32.80.246 at 2020-04-02 13:00:55 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"31", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 31]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (202.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 215ms (ActiveRecord: 202.9ms | Allocations: 4575)
+
+
+Started DELETE "//users/29" for 68.32.80.246 at 2020-04-02 13:00:56 -0400
+Processing by UsersController#destroy as JSON
+  Parameters: {"id"=>"29", "user"=>{}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41:in `set_user'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[36mUser Destroy (0.3ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 29]]
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+  [1m[35m (231.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:34:in `destroy'
+Completed 204 No Content in 234ms (ActiveRecord: 231.9ms | Allocations: 2477)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-02 13:09:02 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 778)
+
+
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:09:17 -0400
+Started GET "//users" for 68.32.80.246 at 2020-04-02 13:09:17 -0400
+Processing by UsersController#index as */*
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.1ms | Allocations: 7379)
+
+
+Started GET "//users" for 68.32.80.246 at 2020-04-02 13:13:53 -0400
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:13:53 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1238)
+
+
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:16:27 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//users" for 68.32.80.246 at 2020-04-02 13:16:27 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/concerns/response.rb:3:in `json_response'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 781)
+
+
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:26:34 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:29:19 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:32:07 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:33:03 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:34:01 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:34:21 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:34:47 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:42:00 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:42:55 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:47:36 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:48:27 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "//bugs" for 68.32.80.246 at 2020-04-02 13:50:01 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/bugs"):
+  
+actionpack (6.0.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.2.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.3) lib/puma/configuration.rb:228:in `call'
+puma (4.3.3) lib/puma/server.rb:682:in `handle_request'
+puma (4.3.3) lib/puma/server.rb:472:in `process_client'
+puma (4.3.3) lib/puma/server.rb:328:in `block in run'
+puma (4.3.3) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
